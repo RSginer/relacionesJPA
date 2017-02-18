@@ -5,6 +5,7 @@
  */
 package com.fpmislata.domain;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,7 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
             + " FROM empleados e ORDER BY e.id")})
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Empleado {
+public class Empleado implements Serializable{
 
     private static final long serialVersionUID = 1L;
 

@@ -5,6 +5,7 @@
  */
 package com.fpmislata.domain;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
             + " FROM plazasAparcamiento p ORDER BY p.id")})
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class PlazaAparcamiento {
+public class PlazaAparcamiento implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
