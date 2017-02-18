@@ -5,6 +5,8 @@
  */
 package com.fpmislata.repository;
 
+import com.fpmislata.domain.Empleado;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,4 +22,11 @@ public class EmpleadosDAO implements EmpleadosDAOLocal {
     EntityManager em;
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    @Override
+    public List<Empleado> getEmpleados() {
+        return em.createNamedQuery("empleados.findAll").getResultList();
+    }
+    
+    
 }

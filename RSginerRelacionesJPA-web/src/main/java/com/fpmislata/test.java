@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "test",
         loadOnStartup = 1,
-        urlPatterns = {"/probar", "/test"})
+        urlPatterns = {"/probar", "/test", "/empleados"})
 public class test extends HttpServlet {
 
     @EJB
@@ -47,6 +47,8 @@ public class test extends HttpServlet {
         if (userPath.equals("/test")) {
             testear(request, response);
             // Si la operacion es Alta Categoria
+        }else if(userPath.equals("/empleados")){
+            obtenerEmpleados(request, response);
         }
     }
     
@@ -55,6 +57,17 @@ public class test extends HttpServlet {
             request.getSession().setAttribute("test", test.test());
             RequestDispatcher rd
                     = request.getRequestDispatcher("/test.jsp");
+            rd.forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void obtenerEmpleados(HttpServletRequest request, HttpServletResponse response){
+                try {
+            request.getSession().setAttribute("listaEmpleados", test.getEmpleados());
+            RequestDispatcher rd
+                    = request.getRequestDispatcher("/empleados.jsp");
             rd.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();

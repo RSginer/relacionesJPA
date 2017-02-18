@@ -5,6 +5,8 @@
  */
 package com.fpmislata.repository;
 
+import com.fpmislata.domain.Empleado;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -13,5 +15,7 @@ import javax.ejb.Local;
  */
 @Local
 public interface EmpleadosDAOLocal {
+
+    List<Empleado> getEmpleados();
     
 }
