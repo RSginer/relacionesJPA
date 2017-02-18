@@ -5,7 +5,6 @@
  */
 package com.fpmislata.domain;
 
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -24,22 +23,22 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Rubén
  */
 @Entity
-@Table(name = "departamentos")
+@Table(name="plazasAparcamiento")
 @NamedQueries({
-    @NamedQuery(name = "departamentos.findAll", query = "SELECT c "
-            + " FROM departamentos d ORDER BY d.id")})
+    @NamedQuery(name="plazasAparcamiento.findAll", query ="SELECT c "
+        + " FROM plazasAparcamiento p ORDER BY p.id")})
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-class Departamento {
+public class PlazaAparcamiento {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @OneToMany(mappedBy = "departamento")
-    private List<Empleado> empleados;
-
+    @OneToOne(mappedBy="plazaAparcamiento")
+    private Empleado empleado;
+    
     public Long getId() {
         return id;
     }
