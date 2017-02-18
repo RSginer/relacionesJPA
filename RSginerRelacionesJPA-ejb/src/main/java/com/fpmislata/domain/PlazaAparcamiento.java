@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name="plazasAparcamiento")
 @NamedQueries({
-    @NamedQuery(name="plazasAparcamiento.findAll", query ="SELECT c "
+    @NamedQuery(name="plazasAparcamiento.findAll", query ="SELECT p "
         + " FROM plazasAparcamiento p ORDER BY p.id")})
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)

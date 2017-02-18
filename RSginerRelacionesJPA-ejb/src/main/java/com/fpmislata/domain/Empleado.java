@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "empleados")
 @NamedQueries({
-    @NamedQuery(name = "empleados.findAll", query = "SELECT c "
+    @NamedQuery(name = "empleados.findAll", query = "SELECT e "
             + " FROM empleados e ORDER BY e.id")})
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)

@@ -12,12 +12,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Rubén
  */
 @Entity
+@Table(name = "proyectos")
+@NamedQueries({
+    @NamedQuery(name = "proyectos.findAll", query = "SELECT p "
+            + " FROM proyectos p ORDER BY p.id")})
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Proyecto {
 
     @Id
