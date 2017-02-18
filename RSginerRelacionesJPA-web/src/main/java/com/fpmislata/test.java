@@ -67,7 +67,7 @@ public class test extends HttpServlet {
                 try {
             request.getSession().setAttribute("listaEmpleados", test.getEmpleados());
             RequestDispatcher rd
-                    = request.getRequestDispatcher("/empleados.jsp");
+                    = request.getRequestDispatcher("/listaEmpleados.jsp");
             rd.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
