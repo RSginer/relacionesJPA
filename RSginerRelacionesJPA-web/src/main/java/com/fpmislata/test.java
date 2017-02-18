@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 public class test extends HttpServlet {
 
     @EJB
-    private com.fpmislata.domain.test test;
+    private service.test test;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
