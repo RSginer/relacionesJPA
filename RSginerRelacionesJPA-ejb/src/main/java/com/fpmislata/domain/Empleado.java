@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -31,17 +32,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "empleados")
 @NamedQueries({
     @NamedQuery(name = "empleados.findAll", query = "SELECT e "
-            + " FROM empleados e ORDER BY e.id")})
+            + " FROM Empleado e ORDER BY e.id")})
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Empleado implements Serializable{
+public class Empleado implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "fkDepartamento")
@@ -52,7 +53,18 @@ public class Empleado implements Serializable{
     private PlazaAparcamiento plazaAparcamiento;
 
     @ManyToMany
+    @JoinTable(name = "Empleados_Proyectos",
+            joinColumns = @JoinColumn(name = "id_empleado"),
+            inverseJoinColumns = @JoinColumn(name = "id_proyecto"))
     private List<Proyecto> proyectos;
+
+    public List<Proyecto> getProyectos() {
+        return proyectos;
+    }
+
+    public void setProyectos(List<Proyecto> proyectos) {
+        this.proyectos = proyectos;
+    }
 
     public PlazaAparcamiento getPlazaAparcamiento() {
         return plazaAparcamiento;
@@ -62,8 +74,8 @@ public class Empleado implements Serializable{
         this.plazaAparcamiento = plazaAparcamiento;
     }
 
-    public Empleado(long Id, Departamento departamento) {
-        this.Id = Id;
+    public Empleado(int id, Departamento departamento) {
+        this.id = id;
         this.departamento = departamento;
     }
 
@@ -71,11 +83,11 @@ public class Empleado implements Serializable{
     }
 
     public long getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(long Id) {
-        this.Id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Departamento getDepartamento() {

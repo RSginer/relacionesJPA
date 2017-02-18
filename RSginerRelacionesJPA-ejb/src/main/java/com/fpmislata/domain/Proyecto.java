@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "proyectos")
 @NamedQueries({
     @NamedQuery(name = "proyectos.findAll", query = "SELECT p "
-            + " FROM proyectos p ORDER BY p.id")})
+            + " FROM Proyecto p ORDER BY p.id")})
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Proyecto implements Serializable{
@@ -38,7 +38,7 @@ public class Proyecto implements Serializable{
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @ManyToMany(mappedBy = "proyectos")
     private List<Empleado> empleados;

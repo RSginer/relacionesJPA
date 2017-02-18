@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "departamentos")
 @NamedQueries({
     @NamedQuery(name = "departamentos.findAll", query = "SELECT d "
-            + " FROM departamentos d ORDER BY d.id")})
+            + " FROM Departamento d ORDER BY d.id")})
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 class Departamento implements Serializable{
@@ -38,16 +38,16 @@ class Departamento implements Serializable{
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @OneToMany(mappedBy = "departamento")
     private List<Empleado> empleados;
 
-    public Long getId() {
-        return id;
+    public int getId() {
+        return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

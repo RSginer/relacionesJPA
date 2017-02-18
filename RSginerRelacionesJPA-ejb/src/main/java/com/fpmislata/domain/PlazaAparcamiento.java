@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "plazasAparcamiento")
 @NamedQueries({
     @NamedQuery(name = "plazasAparcamiento.findAll", query = "SELECT p "
-            + " FROM plazasAparcamiento p ORDER BY p.id")})
+            + " FROM PlazaAparcamiento p ORDER BY p.id")})
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class PlazaAparcamiento implements Serializable{
@@ -37,16 +37,16 @@ public class PlazaAparcamiento implements Serializable{
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @OneToOne(mappedBy = "plazaAparcamiento")
     private Empleado empleado;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
