@@ -35,6 +35,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Empleado {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,7 +49,7 @@ public class Empleado {
     @OneToOne
     @JoinColumn(name = "fkPlazaAparcamiento")
     private PlazaAparcamiento plazaAparcamiento;
-    
+
     @ManyToMany
     private List<Proyecto> proyectos;
 

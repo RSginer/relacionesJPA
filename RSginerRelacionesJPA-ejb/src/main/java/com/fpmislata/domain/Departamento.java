@@ -32,11 +32,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 class Departamento {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @OneToMany(mappedBy = "departamento")
     private List<Empleado> empleados;
 

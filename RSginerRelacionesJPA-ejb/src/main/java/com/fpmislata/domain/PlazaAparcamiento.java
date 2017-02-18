@@ -23,22 +23,24 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Rubén
  */
 @Entity
-@Table(name="plazasAparcamiento")
+@Table(name = "plazasAparcamiento")
 @NamedQueries({
-    @NamedQuery(name="plazasAparcamiento.findAll", query ="SELECT p "
-        + " FROM plazasAparcamiento p ORDER BY p.id")})
+    @NamedQuery(name = "plazasAparcamiento.findAll", query = "SELECT p "
+            + " FROM plazasAparcamiento p ORDER BY p.id")})
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class PlazaAparcamiento {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    @OneToOne(mappedBy="plazaAparcamiento")
+
+    @OneToOne(mappedBy = "plazaAparcamiento")
     private Empleado empleado;
-    
+
     public Long getId() {
         return id;
     }
