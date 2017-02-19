@@ -43,10 +43,10 @@ public class test extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String userPath = request.getServletPath();
 
-        // Si la operacion es listar personas
+        // para probar la conexion al jsp
         if (userPath.equals("/test")) {
             testear(request, response);
-            // Si la operacion es Alta Categoria
+            // para probar el jpa
         }else if(userPath.equals("/empleados")){
             obtenerEmpleados(request, response);
         }

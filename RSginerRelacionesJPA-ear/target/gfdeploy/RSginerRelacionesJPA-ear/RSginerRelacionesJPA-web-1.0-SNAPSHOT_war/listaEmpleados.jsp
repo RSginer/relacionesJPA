@@ -15,7 +15,7 @@
     </head>
     <body>
         <%
-            List<Empleado> listaEmpleados = (List<Empleado>) request.getAttribute("listaEmpleados");
+            List<Empleado> listaEmpleados = (List<Empleado>) request.getSession().getAttribute("listaEmpleados");
             for (int i = 0; i < listaEmpleados.size(); i++) {
                 Empleado e = listaEmpleados.get(i);
                 out.print(e.getId());
