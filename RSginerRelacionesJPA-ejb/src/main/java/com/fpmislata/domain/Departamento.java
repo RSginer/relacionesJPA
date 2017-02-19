@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
             + " FROM Departamento d ORDER BY d.id")})
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-class Departamento implements Serializable{
+public class Departamento implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
@@ -40,8 +40,28 @@ class Departamento implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "nombre")
+    private String nombre;
+
     @OneToMany(mappedBy = "departamento")
     private List<Empleado> empleados;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public List<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    public void setEmpleados(List<Empleado> empleados) {
+        this.empleados = empleados;
+    }
+    
 
     public int getId() {
         return this.id;

@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
             + " FROM Proyecto p ORDER BY p.id")})
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Proyecto implements Serializable{
+public class Proyecto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -42,4 +42,31 @@ public class Proyecto implements Serializable{
 
     @ManyToMany(mappedBy = "proyectos")
     private List<Empleado> empleados;
+
+    @Column(name = "nombre")
+    private String nombre;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    public void setEmpleados(List<Empleado> empleados) {
+        this.empleados = empleados;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 }
