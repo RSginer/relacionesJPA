@@ -43,7 +43,7 @@ public class test extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String userPath = request.getServletPath();
 
-        // para probar la conexion al jsp
+        // para probar la conexion al ejb
         if (userPath.equals("/test")) {
             testear(request, response);
             // para probar el jpa
