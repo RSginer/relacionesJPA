@@ -23,6 +23,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -55,14 +56,17 @@ public class Empleado implements Serializable {
         this.nombre = nombre;
     }
     
+   
     @ManyToOne
     @JoinColumn(name = "fkDepartamento")
     private Departamento departamento;
 
+   
     @OneToOne
     @JoinColumn(name = "fkPlazaAparcamiento")
     private PlazaAparcamiento plazaAparcamiento;
 
+    
     @ManyToMany
     @JoinTable(name = "Empleados_Proyectos",
             joinColumns = @JoinColumn(name = "id_empleado"),

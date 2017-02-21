@@ -17,5 +17,9 @@ import javax.ejb.Local;
 public interface empleadosCRUDServiceLocal {
 
     List<Empleado> getTodos();
+
+    Empleado getEmpleadoById(int id);
+
+    List<Empleado> getEmpleadosByIdDepartamento(int id);
     
 }

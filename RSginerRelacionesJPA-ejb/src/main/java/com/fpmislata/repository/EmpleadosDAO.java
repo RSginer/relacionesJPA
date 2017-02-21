@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -20,13 +21,22 @@ public class EmpleadosDAO implements EmpleadosDAOLocal {
 
     @PersistenceContext(unitName = "RSginerRelacionesJPA")
     EntityManager em;
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
 
     @Override
     public List<Empleado> getEmpleados() {
         return em.createNamedQuery("empleados.findAll").getResultList();
     }
+
+    @Override
+    public Empleado getEmpleadoById(int id) {
+        return em.find(Empleado.class, id);
+    }
     
-    
+    @Override
+    public List<Empleado> getEmpleadosByIdDepartamento(int id){
+        return em.createQuery("SELECT e FROM Empleado e WHERE e.departamento.id = :id")
+        .setParameter("id", id)
+        .getResultList();
+    }
+
 }

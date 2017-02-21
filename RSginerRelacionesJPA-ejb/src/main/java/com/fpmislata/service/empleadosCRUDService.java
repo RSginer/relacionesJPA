@@ -30,7 +30,17 @@ public class empleadosCRUDService implements empleadosCRUDServiceLocal {
         return this.empleadosDao.getEmpleados();
     }
 
+    @Override
+    public Empleado getEmpleadoById(int id) {
+        return this.empleadosDao.getEmpleadoById(id);
+    }
+
+    @Override
+    public List<Empleado> getEmpleadosByIdDepartamento(int id) {
+        return this.empleadosDao.getEmpleadosByIdDepartamento(id);
+    }
     
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    
+
+    
 }

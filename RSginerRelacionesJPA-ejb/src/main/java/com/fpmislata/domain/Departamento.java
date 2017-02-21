@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -42,7 +43,8 @@ public class Departamento implements Serializable{
 
     @Column(name = "nombre")
     private String nombre;
-
+    
+    @XmlTransient
     @OneToMany(mappedBy = "departamento")
     private List<Empleado> empleados;
 

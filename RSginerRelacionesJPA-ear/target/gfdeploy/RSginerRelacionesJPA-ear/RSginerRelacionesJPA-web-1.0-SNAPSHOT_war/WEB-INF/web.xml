@@ -21,7 +21,7 @@
    
    <servlet-mapping>
       <servlet-name>Jersey Web Application</servlet-name>
-      <url-pattern>/webservice/*</url-pattern>
+      <url-pattern>/api/*</url-pattern>
    </servlet-mapping>     
    
     <session-config>

@@ -18,4 +18,7 @@ public interface EmpleadosDAOLocal {
 
     List<Empleado> getEmpleados();
     
+    Empleado getEmpleadoById(int id);
+    
+    List<Empleado> getEmpleadosByIdDepartamento(int id);
 }
