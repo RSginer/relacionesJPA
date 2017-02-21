@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>test</servlet-name>
-        <servlet-class>com.fpmislata.test</servlet-class>
+        <servlet-name>EmpleadosController</servlet-name>
+        <servlet-class>com.fpmislata.EmpleadosController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>test</servlet-name>
-        <url-pattern>/probar</url-pattern>
-        <url-pattern>/test</url-pattern>
+        <servlet-name>EmpleadosController</servlet-name>
         <url-pattern>/empleados</url-pattern>
     </servlet-mapping>
     <session-config>
