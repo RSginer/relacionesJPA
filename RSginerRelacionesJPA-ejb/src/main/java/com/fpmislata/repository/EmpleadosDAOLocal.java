@@ -21,4 +21,10 @@ public interface EmpleadosDAOLocal {
     Empleado getEmpleadoById(int id);
     
     List<Empleado> getEmpleadosByIdDepartamento(int id);
+
+    Empleado addEmpleado(Empleado e);
+    
+    void updateEmpleado(Empleado e);
+    
+    void deleteEmpleado(Empleado e);
 }

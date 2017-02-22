@@ -21,5 +21,11 @@ public interface empleadosCRUDServiceLocal {
     Empleado getEmpleadoById(int id);
 
     List<Empleado> getEmpleadosByIdDepartamento(int id);
-    
+
+    Empleado addEmpleado(Empleado e);
+
+    Empleado updateEmpleado(Empleado e);
+
+    void deleteEmpleado(Empleado e);
+
 }

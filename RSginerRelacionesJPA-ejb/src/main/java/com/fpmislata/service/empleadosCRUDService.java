@@ -19,12 +19,13 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class empleadosCRUDService implements empleadosCRUDServiceLocal {
-  @EJB
+
+    @EJB
     private EmpleadosDAOLocal empleadosDao;
-    
+
     @Resource
     private SessionContext contexto;
-    
+
     @Override
     public List getTodos() {
         return this.empleadosDao.getEmpleados();
@@ -39,8 +40,38 @@ public class empleadosCRUDService implements empleadosCRUDServiceLocal {
     public List<Empleado> getEmpleadosByIdDepartamento(int id) {
         return this.empleadosDao.getEmpleadosByIdDepartamento(id);
     }
-    
-    
 
-    
+    @Override
+    public void deleteEmpleado(Empleado e) {
+        try {
+            this.empleadosDao.deleteEmpleado(e);
+        } catch (Exception ex) {
+            contexto.setRollbackOnly();
+            ex.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public Empleado addEmpleado(Empleado e) {
+        try {
+            this.empleadosDao.addEmpleado(e);
+        } catch (Exception ex) {
+            contexto.setRollbackOnly();
+            ex.printStackTrace();
+        }
+        return e;
+    }
+
+    @Override
+    public Empleado updateEmpleado(Empleado e) {
+        try {
+            this.empleadosDao.updateEmpleado(e);
+        } catch (Exception ex) {
+            contexto.setRollbackOnly();
+            ex.printStackTrace();
+        }
+        return e;
+    }
+
 }
