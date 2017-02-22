@@ -5,7 +5,9 @@
  */
 package com.fpmislata.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -24,6 +26,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,8 +37,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "empleados.findAll", query = "SELECT e "
             + " FROM Empleado e ORDER BY e.id")})
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Empleado implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -55,18 +56,15 @@ public class Empleado implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "fkDepartamento")
     private Departamento departamento;
 
-    @JsonManagedReference
+
     @OneToOne
     @JoinColumn(name = "fkPlazaAparcamiento")
     private PlazaAparcamiento plazaAparcamiento;
 
-    @JsonManagedReference
     @ManyToMany
     @JoinTable(name = "Empleados_Proyectos",
             joinColumns = @JoinColumn(name = "id_empleado"),

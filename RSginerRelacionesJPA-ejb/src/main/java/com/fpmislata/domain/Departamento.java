@@ -6,6 +6,9 @@
 package com.fpmislata.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -21,6 +24,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
@@ -33,7 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
             + " FROM Departamento d ORDER BY d.id")})
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Departamento implements Serializable{
+public class Departamento implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -44,9 +48,9 @@ public class Departamento implements Serializable{
 
     @Column(name = "nombre")
     private String nombre;
-    
-    @JsonBackReference
+
     @XmlTransient
+    @JsonIgnore
     @OneToMany(mappedBy = "departamento")
     private List<Empleado> empleados;
 
@@ -58,6 +62,7 @@ public class Departamento implements Serializable{
         this.nombre = nombre;
     }
 
+    @XmlTransient
     public List<Empleado> getEmpleados() {
         return empleados;
     }
@@ -65,7 +70,6 @@ public class Departamento implements Serializable{
     public void setEmpleados(List<Empleado> empleados) {
         this.empleados = empleados;
     }
-    
 
     public int getId() {
         return this.id;

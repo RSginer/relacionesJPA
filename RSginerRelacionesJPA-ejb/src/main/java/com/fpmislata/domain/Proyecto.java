@@ -6,6 +6,10 @@
 package com.fpmislata.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -21,6 +25,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
@@ -42,7 +47,6 @@ public class Proyecto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @JsonBackReference
     @XmlTransient
     @ManyToMany(mappedBy = "proyectos")
     private List<Empleado> empleados;
@@ -58,6 +62,8 @@ public class Proyecto implements Serializable {
         this.id = id;
     }
 
+    @XmlTransient
+    @JsonIgnore
     public List<Empleado> getEmpleados() {
         return empleados;
     }
