@@ -5,6 +5,7 @@
  */
 package com.fpmislata.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,6 +41,7 @@ public class PlazaAparcamiento implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @JsonBackReference
     @XmlTransient
     @OneToOne(mappedBy = "plazaAparcamiento")
     private Empleado empleado;

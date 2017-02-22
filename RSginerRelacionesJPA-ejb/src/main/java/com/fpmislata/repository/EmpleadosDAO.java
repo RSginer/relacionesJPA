@@ -23,7 +23,8 @@ public class EmpleadosDAO implements EmpleadosDAOLocal {
     
     @Override
     public List<Empleado> getEmpleados() {
-        return em.createNamedQuery("empleados.findAll").getResultList();
+        List<Empleado> lista = em.createNamedQuery("empleados.findAll").getResultList();
+        return lista;
     }
     
     @Override

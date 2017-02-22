@@ -5,6 +5,7 @@
  */
 package com.fpmislata.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -44,6 +45,7 @@ public class Departamento implements Serializable{
     @Column(name = "nombre")
     private String nombre;
     
+    @JsonBackReference
     @XmlTransient
     @OneToMany(mappedBy = "departamento")
     private List<Empleado> empleados;

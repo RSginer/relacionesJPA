@@ -5,6 +5,7 @@
  */
 package com.fpmislata.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -23,7 +24,6 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -44,7 +44,7 @@ public class Empleado implements Serializable {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    
+
     @Column(name = "nombre")
     private String nombre;
 
@@ -55,18 +55,18 @@ public class Empleado implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-   
+
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "fkDepartamento")
     private Departamento departamento;
 
-   
+    @JsonManagedReference
     @OneToOne
     @JoinColumn(name = "fkPlazaAparcamiento")
     private PlazaAparcamiento plazaAparcamiento;
 
-    
+    @JsonManagedReference
     @ManyToMany
     @JoinTable(name = "Empleados_Proyectos",
             joinColumns = @JoinColumn(name = "id_empleado"),

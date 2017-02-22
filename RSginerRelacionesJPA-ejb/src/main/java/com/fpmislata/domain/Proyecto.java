@@ -5,6 +5,7 @@
  */
 package com.fpmislata.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -41,6 +42,7 @@ public class Proyecto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @JsonBackReference
     @XmlTransient
     @ManyToMany(mappedBy = "proyectos")
     private List<Empleado> empleados;
